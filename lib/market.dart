@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'dart:async';
@@ -46,6 +48,7 @@ class MarketPageStage extends State<MarketPage> {
         child: new AppBar(
           elevation: appBarElevation,
           title: new Text("Market Stats"),
+          backgroundColor: Colors.green,
         ),
       ),
       body: new RefreshIndicator(
@@ -94,40 +97,46 @@ class CoinListItem extends StatelessWidget {
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          new Container(
-            width: MediaQuery.of(context).size.width * 0.2,
-            child: new Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new Text(snapshot["rank"]),
-                new Padding(padding: const EdgeInsets.only(right: 8.0)),
-                new Text(snapshot["symbol"])
-              ],
+          Expanded(
+            child: new Container(
+              width: MediaQuery.of(context).size.width * 0.2,
+              child: new Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  new Text(snapshot["rank"]),
+                  new Padding(padding: const EdgeInsets.only(right: 8.0)),
+                  new Text(snapshot["symbol"])
+                ],
+              ),
             ),
           ),
-          new Container(
-            width: MediaQuery.of(context).size.width * 0.5,
-            alignment: Alignment.centerRight,
-            child: new Text("\$" + num.parse(snapshot["market_cap_usd"]).round().toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), 
-              (Match m) => "${m[1]},")),
-          ),
-          new Container(
-            width: MediaQuery.of(context).size.width * 0.3,
-            child: new Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                new Text("\$"+snapshot["price_usd"]),
-                new Text(
-                  num.parse(snapshot["percent_change_24h"]) >= 0 ? 
-                    "+" + snapshot["percent_change_24h"] + "%" : snapshot["percent_change_24h"] + "%",
-                  style: Theme.of(context).primaryTextTheme.body1.apply(
-                    color: num.parse(snapshot["percent_change_24h"]) >= 0 ? Colors.green : Colors.red
-                  ),
-                )
-              ],
+          Expanded(
+            child: new Container(
+              width: MediaQuery.of(context).size.width * 0.5,
+              alignment: Alignment.centerRight,
+              child: new Text("\$" + num.parse(snapshot["market_cap_usd"]).round().toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), 
+                (Match m) => "${m[1]},")),
             ),
-          )
+          ),
+          Expanded(
+            child: new Container(
+              width: MediaQuery.of(context).size.width * 0.3,
+              child: new Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  new Text("\$"+num.parse(snapshot["price_usd"]).toStringAsFixed(10) ),
+                  new Text(
+                    num.parse(snapshot["percent_change_24h"]) >= 0 ? 
+                      "+" + snapshot["percent_change_24h"] + "%" : snapshot["percent_change_24h"] + "%",
+                    style: Theme.of(context).primaryTextTheme.body1.apply(
+                      color: num.parse(snapshot["percent_change_24h"]) >= 0 ? Colors.green : Colors.red
+                    ),
+                  )
+                ],
+              ),
+            )
+          ),
         ],
       )
     );

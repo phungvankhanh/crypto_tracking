@@ -24,8 +24,8 @@ bool darkEnabled = true;
 
 Color varDarkAccent = darkEnabled ? Colors.purple[300] : primary;
 
-Color primary = Colors.purple[700];
-Color accent = Colors.purpleAccent[100];
+Color primary = Colors.green[700];
+Color accent = Colors.greenAccent[100];
 
 
 const double appBarHeight= 50.0;
@@ -45,8 +45,8 @@ class Tabs extends StatelessWidget {
               indicatorColor: varDarkAccent,
               indicatorPadding: const EdgeInsets.only(left: 60.0, bottom: 2.0, right: 60.0),
               tabs: <Tab>[
-                new Tab(icon: new Icon(Icons.person_outline, color: varDarkAccent)),
-                new Tab(icon: new Icon(Icons.menu, color: varDarkAccent,),),
+                new Tab(icon: new Icon(Icons.person_outline, color: Colors.green)),
+                new Tab(icon: new Icon(Icons.menu, color: Colors.green,),),
               ],
             ),
           ),

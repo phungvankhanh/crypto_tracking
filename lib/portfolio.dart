@@ -12,6 +12,7 @@ class PortfolioPage extends StatelessWidget {
         child: new AppBar(
           elevation: appBarElevation,
           title: new Text("Portfolio"),
+          backgroundColor: Colors.green,
         ),
       ),
       body: new Container(

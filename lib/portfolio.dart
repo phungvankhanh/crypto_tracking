@@ -1,42 +1,78 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
-
+import 'package:pie_chart/pie_chart.dart';
 import 'main.dart';
 
-class PortfolioPage extends StatelessWidget {
+
+bool togglee = true;
+
+class PortfolioPage extends StatefulWidget {
+  @override
+  _PortfolioPageState createState() => _PortfolioPageState();
+}
+
+class _PortfolioPageState extends State<PortfolioPage> {
+  bool toggle = false;
+  Map<String, double> dataMap = Map();
+  List<Color> colorList = [
+    Colors.red,
+    Colors.green,
+    Colors.blue,
+    Colors.yellow,
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    dataMap.putIfAbsent("Bitcoin", () => 5);
+    dataMap.putIfAbsent("ETH", () => 3);
+    dataMap.putIfAbsent("LTC", () => 2);
+    dataMap.putIfAbsent("MMO", () => 2);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new PreferredSize(
-        preferredSize: const Size.fromHeight(appBarHeight),
-        child: new AppBar(
-          elevation: appBarElevation,
-          title: new Text("Portfolio"),
-          backgroundColor: Colors.green,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("My Portfolio"),
+      ),
+      body: Container(
+        child: 
+        Center(
+          child: togglee
+              ? PieChart(
+                  dataMap: dataMap,
+                  animationDuration: Duration(milliseconds: 800),
+                  chartLegendSpacing: 32.0,
+                  chartRadius: MediaQuery.of(context).size.width,
+                  showChartValuesInPercentage: true,
+                  showChartValues: true,
+                  showChartValuesOutside: false,
+                  chartValueBackgroundColor: Colors.grey[200],
+                  colorList: colorList,
+                  showLegends: true,
+                  legendPosition: LegendPosition.right,
+                  decimalPlaces: 1,
+                  showChartValueLabel: true,
+                  initialAngle: 0,
+                  chartValueStyle: defaultChartValueStyle.copyWith(
+                    color: Colors.blueGrey[900].withOpacity(0.9),
+                  ),
+                  chartType: ChartType.disc,
+                )
+              : Text("Press FAB to show chart"),
         ),
       ),
-      body: new Container(
-        padding: const EdgeInsets.all(16.0),
-        height: 200.0,
-        child: new _SparkLine1(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: togglePieChart,
+        child: Icon(Icons.insert_chart),
       ),
     );
   }
-}
 
-class _SparkLine1 extends StatelessWidget {
-  final List<double> _data = [3.0,7.0,20.0,3.0,5.0,1.0,10.0];
-
-  @override
-  Widget build(BuildContext context) {
-    return new Sparkline(
-      data: _data,
-      lineWidth: 5.0,
-      lineGradient: new LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [Theme.of(context).primaryColor, Theme.of(context).accentColor]
-      ),
-    );
+  void togglePieChart() {
+    setState(() {
+      togglee = !togglee;
+    });
   }
 }

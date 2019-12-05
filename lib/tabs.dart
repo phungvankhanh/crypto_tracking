@@ -293,7 +293,7 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
                         )
                       : new GestureDetector(
                           onTap: () => _startSearch(),
-                          child: new Text("Aggregate Markets"),
+                          child: new Text("Markets"),
                         ),
                 ][_tabIndex],
                 actions: <Widget>[

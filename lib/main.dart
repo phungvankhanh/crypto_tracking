@@ -29,7 +29,7 @@ int lastUpdate;
 Future<Null> getMarketData() async {
   int numberOfCoins = 1500;
   List tempMarketListData = [];
-
+  print("Call : Get Market Data()");
   Future<Null> _pullData(start, limit) async {
     var response = await http.get(
         Uri.encodeFull("https://api.coinmarketcap.com/v2/ticker/" +
@@ -38,9 +38,10 @@ Future<Null> getMarketData() async {
             "&limit=" +
             limit.toString()),
         headers: {"Accept": "application/json"});
-
+    print(response.body);
     Map rawMarketListData = new JsonDecoder().convert(response.body)["data"];
     tempMarketListData.addAll(rawMarketListData.values);
+    
   }
 
   List<Future> futures = [];
@@ -57,6 +58,7 @@ Future<Null> getMarketData() async {
     jsonFile.writeAsStringSync(json.encode(marketListData));
   });
   print("Got new market data.");
+  print(marketListData);
   lastUpdate = DateTime.now().millisecondsSinceEpoch;
 }
 
@@ -92,7 +94,7 @@ void main() async {
     themeMode = prefs.getString("themeMode");
     darkOLED = prefs.getBool("darkOLED");
   }
-
+  // print(await getMarketData());
   runApp(new CryptoTrackingApp(themeMode, darkOLED));
 }
 

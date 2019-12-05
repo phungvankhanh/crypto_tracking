@@ -637,7 +637,7 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
     var response = await http.get(
         Uri.encodeFull("https://api.coinmarketcap.com/v2/global/"),
         headers: {"Accept": "application/json"});
-
+    print(response);
     globalData = new JsonDecoder().convert(response.body)["data"]["quotes"]["USD"];
   }
 

@@ -1,1 +1,1 @@
-# CryptoPortfolioApp
+# CryptoTrackingApp

@@ -10,7 +10,6 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import './gradient_appbar_with_back.dart';
 
 import 'package:http/http.dart' as http;
-import './theme.dart' as Theme;
 
 
 class NewsPage extends StatefulWidget {

@@ -9,6 +9,7 @@ import 'main.dart';
 import 'portfolio_item.dart';
 import 'portfolio/transaction_sheet.dart';
 import 'market_coin_item.dart';
+import 'news/news.dart';
 
 class Tabs extends StatefulWidget {
   Tabs(
@@ -216,19 +217,28 @@ class TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
                       leading: new Icon(Icons.timeline),
                       title: new Text("Portfolio Timeline"),
                       onTap: () => Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (context) =>
-                                  new PortfolioTabs(0, _makePortfolioDisplay))),
+                        context,
+                        new MaterialPageRoute(
+                            builder: (context) =>
+                                new PortfolioTabs(0, _makePortfolioDisplay))),
                     ),
                     new ListTile(
                       leading: new Icon(Icons.pie_chart_outlined),
                       title: new Text("Portfolio Breakdown"),
                       onTap: () => Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (context) =>
-                                  new PortfolioTabs(1, _makePortfolioDisplay))),
+                        context,
+                        new MaterialPageRoute(
+                            builder: (context) =>
+                                new PortfolioTabs(1, _makePortfolioDisplay))),
+                    ),
+                    new ListTile(
+                      leading: new Icon(Icons.forum),
+                      title: new Text("News"),
+                      onTap: () => Navigator.push(
+                        context,
+                        new MaterialPageRoute(
+                            builder: (context) => 
+                              new NewsPage())),
                     ),
                     new Container(
                       decoration: new BoxDecoration(

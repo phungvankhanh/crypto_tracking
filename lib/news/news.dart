@@ -27,7 +27,7 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
   Future getData() async {
     var response = await http.get(
         Uri.encodeFull(
-            'https://newsapi.org/v2/everything?q=' + newsSelection),
+            'https://newsapi.org/v2/everything?q='+ newsSelection +'&excludeDomains=readwrite.com,slashdot.org'),
         headers: {
           "Accept": "application/json",
           "X-Api-Key": apiKey,
@@ -38,10 +38,6 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
       data = localData;
     });
 
-  }
-
-  bool urlIsNull(var data, int index){
-    return data["articles"][index]["urlToImage"] == null ? true : false;
   }
 
   @override
@@ -64,8 +60,6 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
               colors: [
                 Colors.white,
                 Colors.white
-                // Theme.Colors2.appBarGradientStart,
-                // Theme.Colors2.appBarGradientEnd
               ],
               begin: const FractionalOffset(0.0, 0.0),
               end: const FractionalOffset(1.0, 0.0),
@@ -103,7 +97,6 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
                                 padding: new EdgeInsets.all(10.0),
                                 child: new Column(
                                   children: [
-                                    // urlIsNull(data, index) ? Row() : {
                                       new Row(
                                         children: [
                                           new Expanded(
@@ -172,7 +165,7 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
                                                             color: Colors.black,
                                                             fontFamily: 'Poppins',
                                                             fontWeight: FontWeight.w600,
-                                                            fontSize: 36.0),
+                                                            fontSize: 24.0),
                                                         ),
                                                         backgroundColor: Colors.white,
                                                       ),
@@ -221,7 +214,6 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
                                           ),
                                         ],
                                       ),
-                                    // }
                                   ],
                                 ),
                               ),

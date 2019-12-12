@@ -180,13 +180,13 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
                                                     appBar: new AppBar(
 
                                                       centerTitle: true,
-                                                      title: new Text("CryptoNews", style:const TextStyle(
-                                                          color: Colors.white,
+                                                      title: new Text("Crypto News", style:const TextStyle(
+                                                          color: Colors.black,
                                                           fontFamily: 'Poppins',
                                                           fontWeight: FontWeight.w600,
                                                           fontSize: 36.0),
                                                       ),
-                                                      backgroundColor: Colors.orange,
+                                                      backgroundColor: Colors.white,
                                                     ),
                                                   ),
                                                   transitionsBuilder: (context, animation, secondaryAnimation, child) =>

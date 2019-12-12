@@ -27,7 +27,7 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
   Future getData() async {
     var response = await http.get(
         Uri.encodeFull(
-            'https://newsapi.org/v2/everything?q='+ newsSelection +'&excludeDomains=readwrite.com,slashdot.org'),
+            'https://newsapi.org/v2/everything?q='+ newsSelection +'&excludeDomains=readwrite.com,slashdot.org,google.com'),
         headers: {
           "Accept": "application/json",
           "X-Api-Key": apiKey,

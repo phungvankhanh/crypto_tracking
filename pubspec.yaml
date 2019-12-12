@@ -1,5 +1,6 @@
 name: CryptoTracking
 description: Cryptocurrency portfolio and market explorer.
+version: 1.0.0+1
 
 dependencies:
   flutter:
@@ -12,6 +13,7 @@ dependencies:
   package_info: ^0.3.2
   flutter_webview_plugin:
   timeago:
+  conditional_builder: ^1.0.2
     
   
 

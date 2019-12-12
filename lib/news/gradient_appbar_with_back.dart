@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './theme.dart' as Theme;
 
 class GradientAppBarWithBack extends StatelessWidget {
 
@@ -19,34 +18,34 @@ class GradientAppBarWithBack extends StatelessWidget {
 
       children: <Widget>[
         new Container(
-          margin: new EdgeInsets.only(left: 0.0),
-          padding: new EdgeInsets.only(top: statusBarHeight),
+          margin: new EdgeInsets.only(left: 4.2),
+          padding: new EdgeInsets.only(top: statusBarHeight - 10.0),
           height: statusBarHeight + barHeight,
           child: new Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
 
-                new BackButton(color: Colors.white),
+                new BackButton(color: Colors.black),
 
                 new Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: new Text(title, style:const TextStyle(
-
-                    color: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: new Center(
+                    child: new Text(title, style: TextStyle(
+                    color: Colors.black,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
-                    fontSize: 36.0
-
+                    fontSize: 36.0,
+                    ),
                   ),
-                ),
+                  ),
                 ),
               ],
           ),
 
           decoration: new BoxDecoration(
             gradient: new LinearGradient(
-                colors: [Colors.orange, Colors.white],
+                colors: [Colors.white, Colors.white],
                 begin: const FractionalOffset(0.0, 0.0),
                 end: const FractionalOffset(1.0, 0.0),
                 stops: [0.0, 1.0],

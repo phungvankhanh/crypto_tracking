@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter/rendering.dart';
 
 import 'tabs.dart';
 import 'settings_page.dart';
@@ -63,6 +64,7 @@ Future<Null> getMarketData() async {
 }
 
 void main() async {
+  // debugPaintSizeEnabled = true;
   await getApplicationDocumentsDirectory().then((Directory directory) async {
     File jsonFile = new File(directory.path + "/portfolio.json");
     if (jsonFile.existsSync()) {

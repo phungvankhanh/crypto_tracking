@@ -80,7 +80,7 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
             new GradientAppBarWithBack("News"),
             new Container(
 
-              padding: new EdgeInsets.fromLTRB(0.0, 80.0, 0.0, 0.0),
+              padding: new EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
               child: data == null
                   ? const Center(child: const CircularProgressIndicator())
                   : data["articles"].length != 0

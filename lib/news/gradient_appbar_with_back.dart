@@ -31,15 +31,15 @@ class GradientAppBarWithBack extends StatelessWidget {
                 new Container(
                   padding: const EdgeInsets.symmetric(horizontal: 0.0),
                   child: new Center(
-                    child: new Text(title, style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 24.0,
+                    child: new Text(title, 
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 24.0,
+                      ),
                     ),
                   ),
-                  ),
-                  
                 ),
               ],
             ),

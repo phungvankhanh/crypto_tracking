@@ -20,6 +20,12 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
 
 
   var newsSelection = "bitcoin";
+  var excludeDomains = "readwrite.com"
+                        + ",slashdot.org"
+                        + ",google.com"
+                        + ",thenextweb.com"
+                        + ",businessinsider.com"
+                        + ",sapien.network";
   String apiKey = "97ec2e1bd66c4a83bea5a50471589972";
   var data;
   final FlutterWebviewPlugin flutterWebViewPlugin = new FlutterWebviewPlugin();
@@ -27,7 +33,10 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
   Future getData() async {
     var response = await http.get(
         Uri.encodeFull(
-            'https://newsapi.org/v2/everything?q='+ newsSelection +'&excludeDomains=readwrite.com,slashdot.org,google.com'),
+            'https://newsapi.org/v2/everything?q='
+            + newsSelection 
+            +'&excludeDomains='
+            + excludeDomains),
         headers: {
           "Accept": "application/json",
           "X-Api-Key": apiKey,
@@ -71,7 +80,7 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
             new GradientAppBarWithBack("News"),
             new Container(
 
-              padding: new EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
+              padding: new EdgeInsets.fromLTRB(0.0, 80.0, 0.0, 0.0),
               child: data == null
                   ? const Center(child: const CircularProgressIndicator())
                   : data["articles"].length != 0
@@ -80,7 +89,7 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
                           padding: new EdgeInsets.all(8.0),
                           itemBuilder: (BuildContext context, int index) {
                             return new Container(
-                              margin: new EdgeInsets.only(top: 10.0),
+                              margin: new EdgeInsets.only(top: 25.0),
                               decoration: new BoxDecoration(
                                 color: new Color(0xFFFFFFFF),
                                 shape: BoxShape.rectangle,
@@ -89,12 +98,12 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
                                   new BoxShadow(
                                     color: Colors.black,
                                     blurRadius: 8.0,
-                                    offset: new Offset(0.0, 10.0),
+                                    offset: new Offset(0.0, 3.0),
                                   ),
                                 ],
                               ),
                               child: new Padding(
-                                padding: new EdgeInsets.all(10.0),
+                                padding: new EdgeInsets.all(5.0),
                                 child: new Column(
                                   children: [
                                       new Row(
@@ -130,6 +139,7 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
                                                           ["description"],
                                                       style: new TextStyle(
                                                         color: Colors.grey[800],
+                                                        fontStyle: FontStyle.italic,
                                                       ),
                                                     ),
                                                   ),
@@ -185,24 +195,14 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
                                         ],
                                       ),
                                       new Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                                         children: <Widget>[
+                                          new Text(""),
                                           new Padding(
                                             padding: new EdgeInsets.all(5.0),
                                             child: new Text(
                                               data["articles"][index]["source"]
-                                                  ["name"] + ",",
-                                              style: new TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                color: Colors.grey[600],
-                                                fontStyle: FontStyle.italic,
-                                              ),
-                                            ),
-                                          ),
-                                          new Padding(
-                                            padding:
-                                                new EdgeInsets.only(left: 4.0),
-                                            child: new Text(
-                                              timeago.format(DateTime.parse(
+                                                  ["name"] + ", " + timeago.format(DateTime.parse(
                                                   data["articles"][index]
                                                       ["publishedAt"])),
                                               style: new TextStyle(

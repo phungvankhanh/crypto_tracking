@@ -29,7 +29,7 @@ class GradientAppBarWithBack extends StatelessWidget {
                 new BackButton(color: Colors.black),
 
                 new Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 0.0),
                   child: new Center(
                     child: new Text(title, style: TextStyle(
                     color: Colors.black,
@@ -39,17 +39,17 @@ class GradientAppBarWithBack extends StatelessWidget {
                     ),
                   ),
                   ),
+                  
                 ),
               ],
-          ),
-
+            ),
           decoration: new BoxDecoration(
             gradient: new LinearGradient(
                 colors: [Colors.white, Colors.white],
                 begin: const FractionalOffset(0.0, 0.0),
                 end: const FractionalOffset(1.0, 0.0),
                 stops: [0.0, 1.0],
-                tileMode: TileMode.clamp
+                tileMode: TileMode.clamp,
             ),
           ),
         ),

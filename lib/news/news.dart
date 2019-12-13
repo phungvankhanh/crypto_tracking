@@ -89,7 +89,7 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
                           padding: new EdgeInsets.all(8.0),
                           itemBuilder: (BuildContext context, int index) {
                             return new Container(
-                              margin: new EdgeInsets.only(top: 25.0),
+                              margin: new EdgeInsets.only(bottom: 25.0),
                               decoration: new BoxDecoration(
                                 color: new Color(0xFFFFFFFF),
                                 shape: BoxShape.rectangle,

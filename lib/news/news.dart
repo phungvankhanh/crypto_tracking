@@ -25,7 +25,8 @@ class NewsPageState extends State<NewsPage> with SingleTickerProviderStateMixin 
                         + ",google.com"
                         + ",thenextweb.com"
                         + ",businessinsider.com"
-                        + ",sapien.network";
+                        + ",sapien.network"
+                        + "iterm2.com";
   String apiKey = "97ec2e1bd66c4a83bea5a50471589972";
   var data;
   final FlutterWebviewPlugin flutterWebViewPlugin = new FlutterWebviewPlugin();

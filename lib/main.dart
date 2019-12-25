@@ -297,6 +297,7 @@ class CryptoTrackingAppState extends State<CryptoTrackingApp> {
     }
 
     return new MaterialApp(
+      debugShowCheckedModeBanner: false,
       color: darkEnabled
           ? darkOLED ? darkThemeOLED.primaryColor : darkTheme.primaryColor
           : lightTheme.primaryColor,
